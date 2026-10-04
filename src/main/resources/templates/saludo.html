@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <title>Saludo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Mensaje del Sistema:</h1>
+
+    <h2 th:text="${saludo}" th:style="${claseCss}">Saludo</h2>
+
+    <hr>
+
+    <ul>
+      <li>
+        <strong>1. Session:</strong> Obteniendo datos guardados en la sesión: <span th:text="${session.operador}">Operador</span>
+      </li>
+      <li>
+        <strong>2. Param:</strong> Leyendo parámetros de la URL: <br> Nombre extraído de la URL: <strong th:text="${param.nombre != null ? param.nombre : 'Ninguno'}">N/A</strong> <br> <span th:if="${param.error}">¡Se ha detectado un error de accesso!</span>
+      </li>
+      <li>
+        <strong>3. Utilidades (#dates);</strong> Manipulando Fechas; <br> Fecha Actual Formateada: <span th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy')}">00/00/0000</span>
+      </li>
+    </ul>
+
+    <div>
+      <a th:href="@{/}">Volver al Inicio</a>
+    </div>
+  </body>
+</html>

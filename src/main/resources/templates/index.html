@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <title>Inicio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1 th:text="${mensajeBienvenida}">Título</h1>
+    <p>Hola, <span th:text="${nombreUsuario}">Usuario!</span></p>
+
+    <hr>
+
+    <h2>Menú de Navegación</h2>
+    <ul>
+      <a th:href="@{/saludo}">Ver Saludo y Objetos Implícitos</a>
+      <a th:href="@{/catalogo}">Ver Catálogo de Juegos</a>
+    </ul>
+  </body>
+</html>

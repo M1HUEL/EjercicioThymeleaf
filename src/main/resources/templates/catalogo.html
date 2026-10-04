@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <title>Catálogo de Juegos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+      }
+
+      table {
+        width: 80%;
+        margin: auto;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .agotado {
+        color: red;
+        font-weight: bold;
+      }
+
+      .disponible {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Catálogo de Videojuegos</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Género</th>
+          <th>Plataforma</th>
+          <th>Precio</th>
+          <th>Disponibilidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="juego: ${juegos}">
+          <td th:text="${juego.titulo}">Título</td>
+          <td th:text="${juego.genero}">Género</td>
+          <td th:text="${juego.plataforma}">Plataforma</td>
+          <td th:text="${juego.precio + '$'}">00.00$</td>
+
+          <td>
+            <span th:if="${juego.disponible}" class="disponible">Disponible</span>
+            <span th:unless="${juego.disponible}" class="agotado">Agotado</span>
+          </td>
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(juegos)}">
+          <td colspan="5">No hay juegos disponibles en este momento!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <a th:href="@{/}">Volver al Inicio</a>
+    </div>
+  </body>
+</html>
